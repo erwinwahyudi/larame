@@ -14,3 +14,36 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/halo', function() {
+    return('Ini adalah halaman halo'); 
+});
+
+
+Route::get('/form', 'FormController@index');
+Route::get('/form/create', 'FormController@create');
+Route::get('/form/show/{id}', 'FormController@show');
+    
+// Route::group('/dashboard', ['middleware' => ['usia']], function() {
+    Route::post('/form', 'FormController@store');
+// });
+
+Route::get('/restricted', function(){
+	return 'Anda tidak dizinkan mengakses halaman ini';
+});
+
+Route::get('/nama/{nama}',function($nama){
+	return 'Nama anda adalah '.$nama;	 
+});
+
+Route::get('/nama/{nama}/hobi/{hobi}', function($nama, $hobi){
+	return 'Nama anda '.$nama.' Hobi anda '.$hobi;
+});
+
+Route::get('/tugas', 'TugasController@getTugas');
+Route::get('/tugas/{id}', 'TugasController@getDetail');
+
+// Route::get('/form', function(){
+// 	return view('form');
+// });
+// Route::post('/form', 'FormController@store');
