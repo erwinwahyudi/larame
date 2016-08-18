@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
+@extends('layouts.main')
+@section('title', 'Form')
+@section('header', 'Halaman Isi Form')
+
+
+@section('konten')
 	<ul>
-	@foreach ($tugas as $key => $data)
-		<li> <a href="/form/show/{{ $key }}">{{ $data }}</li>
+	@foreach ($form as $data)
+		<li> <a href="/form/show/{{ $data->id }}">{{ $data->nama }}</li>
 	@endforeach
 	</ul>
-	
-</body>
-</html>
+@stop
+

@@ -1,9 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
+@extends('layouts.main')
+@section('title', 'Form')
+@section('header', 'Tambah Data')
+
+
+@section('konten')
 
 	{{-- <form action="/dashboard" method="POST" role="form">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -38,5 +38,4 @@
 	{!! Form::close() !!}
 
 
-</body>
-</html>
+@stop

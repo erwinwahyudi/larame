@@ -6,15 +6,13 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Requests\FormRequest;
+use App\Form;
 
 class FormController extends Controller
 {
 	public function index(){
-		$tugas = array('Mencuci piring',
-    					'Memasak nasi',
-    					'Membereskan tempat tidur'
-    					);
-		return view('form.index', array('tugas' => $tugas));
+		$form = Form::All();
+		return view('form.index', array('form' => $form));
 	}
 
 	public function create(){
@@ -26,10 +24,7 @@ class FormController extends Controller
     }
 
     public function show($id){
-    	$tugas = array('Mencuci piring',
-    					'Memasak nasi',
-    					'Membereskan tempat tidur'
-    					);
-    	return view('form.detail', array('tugas' => $tugas[$id]));
+    	$form = Form::find($id);
+    	return view('form.detail', array('form' => $form));
     }
 }
