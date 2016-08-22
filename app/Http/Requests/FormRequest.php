@@ -27,7 +27,7 @@ class FormRequest extends Request
     {
         return [
             'umur' => 'required',
-            'tanggal' => 'required',
+            'nama' => 'required',
             'jenis_kelamin' => 'required'
         ];
     }

@@ -12,7 +12,8 @@ class FormController extends Controller
 {
 	public function index(){
 		$form = Form::All();
-		return view('form.index', array('form' => $form));
+		// return view('form.index')->with('form', $form);
+		return view('form.index', compact('form'));
 	}
 
 	public function create(){
@@ -20,11 +21,23 @@ class FormController extends Controller
 	}
 
     public function store(FormRequest $request){
-    	return 'data form sukses ditambah';
+    	$umur = $request->input('umur');
+    	$nama = $request->input('nama');
+    	$jk = $request->input('jenis_kelamin');
+    	if ($request->input('umur') == 'abc') {
+			$request->flashOnly('nama');
+			return redirect()->back();
+		} 
+    	Form::create([ 	//Form:: untuk mengakses model form
+    			'nama' => $nama,
+    			'umur' => $umur,
+    			'jenis_kelamin' => $jk
+    		]);
+    	return redirect('form')->with('message', 'Data berhasil  ditambahkan');
     }
 
     public function show($id){
-    	$form = Form::find($id);
+    	$form = Form::findOrFail($id);
     	return view('form.detail', array('form' => $form));
     }
 }
