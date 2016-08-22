@@ -20,7 +20,11 @@ class FormController extends Controller
 	}
 
     public function store(FormRequest $request){
-    	return 'data form sukses ditambah';
+    	$umur = $request->input('umur');
+    	$tanggal = $request->input('tanggal');
+    	$jenis_kelamin = $request->input('jenis_kelamin');
+    	dd($umur, $tanggal, $jenis_kelamin);
+
     }
 
     public function show($id){
