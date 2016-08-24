@@ -54,6 +54,11 @@
 		<div class="page-header">
 		  <h1> @yield('header')</h1>
 		</div>
+		
+		@if(Session::has('message'))
+			<div>{{Session::get('message')}}</div>
+		@endif
+
 	</div>
 
 	<div class="container">

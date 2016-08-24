@@ -23,14 +23,16 @@ Route::get('/halo', function() {
 Route::get('/form', 'FormController@index');
 Route::get('/form/create', 'FormController@create');
 Route::get('/form/show/{id}', 'FormController@show');
-    
-// Route::group('/dashboard', ['middleware' => ['usia']], function() {
-    Route::post('/form', 'FormController@store');
-// });
+// Route::post('/form', 'FormController@store');    
+Route::post('/form', ['middleware' => 'usia', 'uses' => 'FormController@store']);
 
 Route::get('/restricted', function(){
 	return 'Anda tidak dizinkan mengakses halaman ini';
 });
+
+Route::get('/form/edit/{id}', 'FormController@edit');
+Route::put('/form/update/{id}', 'FormController@update');
+Route::delete('/form/hapus/{id}', 'FormController@delete');
 
 Route::get('/nama/{nama}',function($nama){
 	return 'Nama anda adalah '.$nama;	 

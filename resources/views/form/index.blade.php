@@ -5,13 +5,9 @@
 
 @section('konten')
 	
-	@if(Session::has('message'))
-		<div>{{Session::get('message')}}</div>
-	@endif
-
 	<ul>
 	@foreach ($form as $data)
-		<li> <a href="{{URL::to('/form/show/')}}/{{ $data->id }}">{{ $data->nama }}</li>
+		<li> <a href="{{URL::to('/form/show/'.$data->id)}}">{{ $data->nama }}</li>
 	@endforeach
 	</ul>
 @stop
