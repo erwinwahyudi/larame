@@ -28,10 +28,10 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse navbar-ex1-collapse">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="/form">Home</a></li>
+						<li class="active"><a href="{{URL::to('/form')}}">Home</a></li>
 					</ul>
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="/form/create">Tambah Data</a></li>
+						<li class="active"><a href="{{URL::to('/form/create')}}">Tambah Data</a></li>
 					</ul>
 					{{-- <ul class="nav navbar-nav navbar-right">
 						<li><a href="#">Link</a></li>

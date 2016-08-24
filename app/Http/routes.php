@@ -23,9 +23,12 @@ Route::get('/halo', function() {
 Route::get('/form', 'FormController@index');
 Route::get('/form/create', 'FormController@create');
 Route::get('/form/show/{id}', 'FormController@show');
+Route::post('/form', 'FormController@store');
+Route::get('/form/edit/{id}', 'FormController@edit');
+Route::post('/form/edit', 'FormController@update');
     
 // Route::group('/dashboard', ['middleware' => ['usia']], function() {
-    Route::post('/form', 'FormController@store');
+    
 // });
 
 Route::get('/restricted', function(){
