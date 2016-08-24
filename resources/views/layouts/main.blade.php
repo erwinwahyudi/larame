@@ -54,6 +54,14 @@
 		<div class="page-header">
 		  <h1> @yield('header')</h1>
 		</div>
+		
+		@if(Session::has('message'))
+			<div class="alert alert-info">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<strong>Proses :</strong> {{Session::get('message')}}
+			</div>
+		@endif
+
 	</div>
 
 	<div class="container">

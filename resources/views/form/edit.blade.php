@@ -1,6 +1,6 @@
 @extends('layouts.main')
-@section('title', 'Form')
-@section('header', 'Tambah Data')
+@section('title', 'Form Edit')
+@section('header', 'Update Data')
 
 
 @section('konten')
@@ -23,21 +23,20 @@
 		<p>{{ $error }}</p>
 	@endforeach --}}
 	
-	{!! Form::open(array('url' => '/form')) !!}
+	{!! Form::open(array('url' => '/form/update/'.$form->id, 'method' => 'post')) !!}
+		<input type="hidden" name="_method" value="put">
 		<div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
 		    {!! Form::label('nama', 'Nama') !!}
-		    {!! Form::text('nama', old('nama'), ['class' => 'form-control', 'required' => 'required']) !!}
-			<small class="text-danger">{{ $errors->first('nama') }}</small>
+		    <input type="text" name="nama" id="input" class="form-control" value="{{ $form->nama }}" required="required" title="">
+		    <small class="text-danger">{{ $errors->first('nama') }}</small>
 		</div>
-		{{-- <input type="text" name="name" value="{{ old('nama') }} "> --}}
-    	<div class="form-group{{ $errors->has('umur') ? ' has-error' : '' }}">
+		<div class="form-group{{ $errors->has('umur') ? ' has-error' : '' }}">
     	    {!! Form::label('umur', 'Umur') !!}
-    	    {!! Form::text('umur', null, ['class' => 'form-control', 'required' => 'required']) !!}
+    	    <input type="number" name="umur" id="inputUmur" class="form-control" value="{{ $form->umur }}" max="" step="" required="required" title="">
     	    <small class="text-danger">{{ $errors->first('umur') }}</small>
     	</div>
     	<div class="form-group{{ $errors->has('jenis_kelamin') ? ' has-error' : '' }}">
     	    {!! Form::label('jenis_kelamin', 'Input label') !!}
-    	    {{-- {!! Form::select('jenis_kelamin', array('L' => 'Laki-laki', 'P' => 'Perempuan'), 'L', ['id' => 'jenis_kelamin', 'class' => 'form-control', 'required' => 'required', 'multiple']) !!} --}}
     	    <select name="jenis_kelamin" id="inputJenis_kelamin" class="form-control" required="required">
     	    	<option value="Laki-laki">Laki-laki</option>
     	    	<option value="Perempuan">Perempuan</option>

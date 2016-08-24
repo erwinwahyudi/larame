@@ -23,17 +23,16 @@ Route::get('/halo', function() {
 Route::get('/form', 'FormController@index');
 Route::get('/form/create', 'FormController@create');
 Route::get('/form/show/{id}', 'FormController@show');
-Route::post('/form', 'FormController@store');
-Route::get('/form/edit/{id}', 'FormController@edit');
-Route::post('/form/edit', 'FormController@update');
-    
-// Route::group('/dashboard', ['middleware' => ['usia']], function() {
-    
-// });
+// Route::post('/form', 'FormController@store');    
+Route::post('/form', ['middleware' => 'usia', 'uses' => 'FormController@store']);
 
 Route::get('/restricted', function(){
-	return 'Anda tidak dizinkan mengakses halaman ini';
+	return 'Umur harus lebih dari 18 (redirect dg middleware)';
 });
+
+Route::get('/form/edit/{id}', 'FormController@edit');
+Route::put('/form/update/{id}', 'FormController@update');
+Route::delete('/form/hapus/{id}', 'FormController@delete');
 
 Route::get('/nama/{nama}',function($nama){
 	return 'Nama anda adalah '.$nama;	 
@@ -50,3 +49,6 @@ Route::get('/tugas/{id}', 'TugasController@getDetail');
 // 	return view('form');
 // });
 // Route::post('/form', 'FormController@store');
+Route::auth();
+
+Route::get('/home', 'HomeController@index');

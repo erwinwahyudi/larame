@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Form extends Model
 {
     protected $table = 'form';
-    protected $fillable = ['nama', 'jenis_kelamin'];
+    protected $fillable = ['nama', 'umur', 'jenis_kelamin'];
     protected $hidden = [];
 }
