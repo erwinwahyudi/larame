@@ -28,7 +28,7 @@ class FormController extends Controller
     	$jk = $request->input('jenis_kelamin');
     	if ($request->input('umur') == 'abc') {
 			$request->flashOnly('nama');
-			return redirect()->back()->with('message', 'data umur salah');
+			return redirect()->back();
 		} 
     	Form::create([ 	//Form:: untuk mengakses model form
     			'nama' => $nama,
@@ -36,7 +36,6 @@ class FormController extends Controller
     			'jenis_kelamin' => $jk
     		]);
     	return redirect('form')->with('message', 'Data berhasil  ditambahkan');
-
     }
 
     public function show($id){
@@ -67,7 +66,8 @@ class FormController extends Controller
 
     public function delete($id){
         $form = Form::findOrFail($id);
+        // die('ada');
         $form->delete();
-        return redirect('/form')->with('message', 'Data terhapus');
+        return redirect('form')->with('message', 'Data terhapus');
     }
 }
